@@ -23,12 +23,13 @@ public class Main
         strArrays.add(new String[5000]);
         strArrays.add(new String[5000]);
         strArrays.add(new String[50000]);
-        strArrays.add(new String[500000]);
-        strArrays.add(new String[5000000]);
-        strArrays.add(new String[50000000]);
-        strArrays.add(new String[500000000]);
+        strArrays.add(new String[50000]);
+        strArrays.add(new String[51000]);
+        strArrays.add(new String[52000]);
+        strArrays.add(new String[53000]);
 
         // O(1)
+        System.out.print("O(1): ");
         for (String[] anArray : strArrays)
         {
             START = System.nanoTime();
@@ -37,11 +38,13 @@ public class Main
             diff = END - START;
             System.out.print(diff.toString() + " ");
         }
+        System.out.println("\n");
 
 
 
 
         // O(N)
+        System.out.print("O(N): ");
         strArray = new String[5];
         strArray[0] = "Hello";
         strArray[1] = "GOODBYE";
@@ -49,32 +52,58 @@ public class Main
         strArray[3] = "Hello";
         strArray[4] = "Junk";
         someString = "Advanced Java";
-        if(!ContainsValue(strArray, someString))
+        for (String[] anArray : strArrays)
         {
-            System.out.println("String array does not contain the value");
+            START = System.nanoTime();
+            bResult = ContainsValue(anArray, someString);
+            END = System.nanoTime();
+            diff = END - START;
+            System.out.print(diff.toString() + " ");
         }
+        System.out.println("\n");
+
+
+
+
+
 
         // O(N2)
+        System.out.print("O(N2): ");
         strArray = new String[5];
         strArray[0] = "Hello";
         strArray[1] = "GOODBYE";
         strArray[2] = "SEE YA";
         strArray[3] = "Hello";
         strArray[4] = "Junk";
-        if (ContainsDuplicates(strArray))
+        for (String[] anArray : strArrays)
         {
-            System.out.println("Array has duplicates");
+            START = System.nanoTime();
+            bResult = ContainsDuplicates(anArray);
+            END = System.nanoTime();
+            diff = END - START;
+            System.out.print(diff.toString() + " ");
         }
+        System.out.print("\n");
+
+
+
+
         // O(2N)
         Integer seed = 8;
         String theSequence = "";
 
+        System.out.print("O(2N): ");
         for (int x = 0; x <= 20; x++)
         {
+            START = System.nanoTime();
             seed = Fibonacci(x);
-            theSequence += seed.toString() + ", ";
+            END = System.nanoTime();
+            diff = END - START;
+            System.out.print(diff.toString() + " ");
+            // theSequence += seed.toString() + ", ";
         }
-        System.out.println(theSequence);
+        // System.out.println(theSequence);
+        System.out.println("DONE");
     }
 
     /**
@@ -97,7 +126,10 @@ public class Main
     {
         for (String element : elements)
         {
-            if (element.equals(value)) return true;
+            if(element != null)
+            {
+                if (element.equals(value)) return true;
+            }
         }
 
         return false;
@@ -117,7 +149,10 @@ public class Main
                 // Don't compare with self
                 if (outer == inner) continue;
 
-                if (elements[outer] == elements[inner]) return true;
+                if (elements[outer] != null && elements[inner] != null)
+                {
+                    if (elements[outer] == elements[inner]) return true;
+                }
             }
         }
 
