@@ -18,9 +18,9 @@ public class Main {
 
         System.out.printf("%9s     %9s     %9s     %9s     %9s     %9s     %9s     %8s\n", "O(1)","O(log n)","O(n)","O(n2)","O(nc)", "O(2n)","O(cn)", "O(n!)");
         System.out.printf("%9s     %9s     %9s     %9s     %9s     %9s     %9s     %9s\n", "--------","--------","--------","--------","--------", "--------","--------", "--------");
-        for (int i=0; i<wholeNumber; i++) {
+        for (int i=2; i<wholeNumber; i++) {
 
-            System.out.printf("%9d     %9d     %9d     %9d     %9d     %9d     %9d     %9d\n",
+            System.out.printf("%9d     %9f     %9d     %9d     %9d     %9d     %9d     %9d\n",
                     1,
                     doLogN(i),
                     doN(i),
@@ -32,37 +32,37 @@ public class Main {
         }
     }
 
-    private static Double doLogN(int i)
+    private static float doLogN(int i)
     {
-        return Math.log(i);
+        return (float) Math.log(i);
     }
 
-    private static Double doN(int i)
+    private static double doN(int i)
     {
-        return Double.valueOf(i);
+        return (double) i;
     }
 
-    private static Double doN2(int i)
+    private static double doN2(int i)
     {
         return Math.pow(i, 2);
     }
 
-    private static Double doNC(int i, int c)
+    private static double doNC(int i, int c)
     {
         return Math.pow(i, c);
     }
 
-    private static Double do2N(int i)
+    private static double do2N(int i)
     {
         return Double.valueOf(i * 2);
     }
 
-    private static Double doCN(int i, int c)
+    private static double doCN(int i, int c)
     {
         return Math.pow(c, i);
     }
 
-    private static Double doFractal(int i)
+    private static double doFractal(int i)
     {
         return 0d;
     }
