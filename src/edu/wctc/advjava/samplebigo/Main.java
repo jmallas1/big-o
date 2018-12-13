@@ -1,18 +1,45 @@
 package edu.wctc.advjava.samplebigo;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Main
 {
+    static Long START;
+    static Long END;
+    static Long diff;
+
     public static void main(String[] args)
     {
         String[] strArray;
         String someString;
+        Boolean bResult;
+
+        ArrayList<String[]> strArrays = new ArrayList();
+        strArrays.add(new String[5]);
+        strArrays.add(new String[50]);
+        strArrays.add(new String[500]);
+        strArrays.add(new String[5000]);
+        strArrays.add(new String[5000]);
+        strArrays.add(new String[50000]);
+        strArrays.add(new String[500000]);
+        strArrays.add(new String[5000000]);
+        strArrays.add(new String[50000000]);
+        strArrays.add(new String[500000000]);
 
         // O(1)
-        strArray = new String[5];
-        if (IsFirstElementNull(strArray))
+        for (String[] anArray : strArrays)
         {
-            System.out.println("Frist element null");
+            START = System.nanoTime();
+            bResult = IsFirstElementNull(anArray);
+            END = System.nanoTime();
+            diff = END - START;
+            System.out.print(diff.toString() + " ");
         }
+
+
+
 
         // O(N)
         strArray = new String[5];
